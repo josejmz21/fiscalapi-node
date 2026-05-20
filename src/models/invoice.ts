@@ -105,6 +105,9 @@ export interface Complement {
 
   /** Complemento de carta porte */
   cartaPorte?: LadingComplement;
+
+  /** Complemento de Comercio Exterior */
+  comercioExterior?: ComercioExteriorComplement;
 }
 
 // ============================================================================
@@ -1156,9 +1159,252 @@ export interface LadingComplement {
   tiposFigura?: LadingFigure[];
 }
 
+// ============================================================================
+// Comercio Exterior Complement
+// ============================================================================
+
+/**
+ * Complemento de Comercio Exterior
+ */
+export interface ComercioExteriorComplement {
+  /** Motivo del traslado. Catálogo SAT c_MotivoTraslado */
+  motivoTrasladoId?: string;
+
+  /** Clave de pedimento. Catálogo SAT c_ClaveDePedimento */
+  claveDePedimentoId: string;
+
+  /** Certificado de origen */
+  certificadoOrigen: number;
+
+  /** Número de certificado de origen */
+  numCertificadoOrigen?: string;
+
+  /** Número del exportador confiable */
+  numeroExportadorConfiable?: string;
+
+  /** Clave de Incoterm. Catálogo SAT c_INCOTERM */
+  incotermId?: string;
+
+  /** Observaciones */
+  observaciones?: string;
+
+  /** Tipo de cambio USD. Usar string para preservar escala/precisión decimal en la serialización JSON (e.g. "17.3477") */
+  tipoCambioUSD: number | string;
+
+  /** Datos del emisor para Comercio Exterior */
+  emisor?: ComercioExteriorEmisor;
+
+  /** Datos del receptor para Comercio Exterior */
+  receptor?: ComercioExteriorReceptor;
+
+  /** Propietarios de la mercancía */
+  propietarios?: ComercioExteriorPropietario[];
+
+  /** Destinatarios de la mercancía */
+  destinatarios?: ComercioExteriorDestinatario[];
+
+  /** Mercancías */
+  mercancias: ComercioExteriorMercancia[];
+}
+
+/**
+ * Emisor del complemento de Comercio Exterior
+ */
+export interface ComercioExteriorEmisor {
+  /** CURP del emisor */
+  curp?: string;
+
+  /** Domicilio del emisor */
+  domicilio: ComercioExteriorEmisorDomicilio;
+}
+
+/**
+ * Domicilio del emisor del complemento de Comercio Exterior
+ */
+export interface ComercioExteriorEmisorDomicilio {
+  /** Calle */
+  calle: string;
+
+  /** Número exterior */
+  numeroExterior?: string;
+
+  /** Número interior */
+  numeroInterior?: string;
+
+  /** Clave de colonia. Catálogo SAT c_Colonia */
+  coloniaId?: string;
+
+  /** Clave de localidad. Catálogo SAT c_Localidad */
+  localidadId?: string;
+
+  /** Referencia del domicilio */
+  referencia?: string;
+
+  /** Clave de municipio. Catálogo SAT c_Municipio */
+  municipioId?: string;
+
+  /** Clave del estado. Catálogo SAT c_Estado */
+  estadoId: string;
+
+  /** Clave del país. Catálogo SAT c_Pais */
+  paisId: string;
+
+  /** Clave del código postal. Catálogo SAT c_CodigoPostal */
+  codigoPostalId: string;
+}
+
+/**
+ * Receptor del complemento de Comercio Exterior
+ */
+export interface ComercioExteriorReceptor {
+  /** Número de registro de identificación tributaria */
+  numRegIdTrib?: string;
+
+  /** Domicilio del receptor */
+  domicilio?: ComercioExteriorReceptorDomicilio;
+}
+
+/**
+ * Domicilio del receptor del complemento de Comercio Exterior
+ */
+export interface ComercioExteriorReceptorDomicilio {
+  /** Calle */
+  calle: string;
+
+  /** Número exterior */
+  numeroExterior?: string;
+
+  /** Número interior */
+  numeroInterior?: string;
+
+  /** Colonia */
+  colonia?: string;
+
+  /** Localidad */
+  localidad?: string;
+
+  /** Referencia del domicilio */
+  referencia?: string;
+
+  /** Municipio */
+  municipio?: string;
+
+  /** Estado */
+  estado: string;
+
+  /** Clave del país. Catálogo SAT c_Pais */
+  paisId: string;
+
+  /** Código postal */
+  codigoPostal: string;
+}
+
+/**
+ * Propietario de la mercancía en Comercio Exterior
+ */
+export interface ComercioExteriorPropietario {
+  /** Número de registro de identificación tributaria */
+  numRegIdTrib: string;
+
+  /** Clave de residencia fiscal. Catálogo SAT c_Pais */
+  residenciaFiscalId: string;
+}
+
+/**
+ * Destinatario de la mercancía en Comercio Exterior
+ */
+export interface ComercioExteriorDestinatario {
+  /** Número de registro de identificación tributaria */
+  numRegIdTrib?: string;
+
+  /** Nombre del destinatario */
+  nombre?: string;
+
+  /** Domicilios del destinatario */
+  domicilios: ComercioExteriorDestinatarioDomicilio[];
+}
+
+/**
+ * Domicilio del destinatario del complemento de Comercio Exterior
+ */
+export interface ComercioExteriorDestinatarioDomicilio {
+  /** Calle */
+  calle: string;
+
+  /** Número exterior */
+  numeroExterior?: string;
+
+  /** Número interior */
+  numeroInterior?: string;
+
+  /** Colonia */
+  colonia?: string;
+
+  /** Localidad */
+  localidad?: string;
+
+  /** Referencia del domicilio */
+  referencia?: string;
+
+  /** Municipio */
+  municipio?: string;
+
+  /** Estado */
+  estado: string;
+
+  /** Clave del país. Catálogo SAT c_Pais */
+  paisId: string;
+
+  /** Código postal */
+  codigoPostal: string;
+}
+
+/**
+ * Mercancía del complemento de Comercio Exterior
+ */
+export interface ComercioExteriorMercancia {
+  /** Número de identificación de la mercancía */
+  noIdentificacion: string;
+
+  /** Clave de fracción arancelaria. Catálogo SAT c_FraccionArancelaria */
+  fraccionArancelariaId?: string;
+
+  /** Cantidad de la mercancía conforme a la unidad aduana. Usar string para preservar escala decimal (e.g. "1.000") */
+  cantidadAduana?: number | string;
+
+  /** Clave de unidad aduana. Catálogo SAT c_UnidadAduana */
+  unidadAduanaId?: string;
+
+  /** Valor unitario en aduana. Usar string para preservar escala decimal (e.g. "120.00") */
+  valorUnitarioAduana?: number | string;
+
+  /** Valor en dólares. Usar string para preservar escala decimal (e.g. "120.00") */
+  valorDolares: number | string;
+
+  /** Descripciones específicas de la mercancía */
+  descripcionesEspecificas?: ComercioExteriorMercanciaDescripcionEspecifica[];
+}
+
+/**
+ * Descripción específica de una mercancía de Comercio Exterior
+ */
+export interface ComercioExteriorMercanciaDescripcionEspecifica {
+  /** Marca */
+  marca: string;
+
+  /** Modelo */
+  modelo?: string;
+
+  /** Sub-modelo */
+  subModelo?: string;
+
+  /** Número de serie */
+  numeroSerie?: string;
+}
+
 /**
  * Modelo factura
- * Contiene toda la información de una factura, como datos del emisor, receptor, 
+ * Contiene toda la información de una factura, como datos del emisor, receptor,
  * productos/servicios, importes, método de pago, el tipo de factura, entre otros.
  */
 export interface Invoice extends BaseDto {
@@ -1206,6 +1452,9 @@ export interface Invoice extends BaseDto {
 
   /** Código de método para la factura de pago del catálogo del SAT c_MetodoPago */
   paymentMethodCode?: string;
+
+  /** Condiciones de pago aplicables a la factura */
+  paymentConditions?: string;
 
   /** Tipo de cambio FIX conforme a la moneda registrada en la factura. Default: 1 */
   exchangeRate?: number;
@@ -1299,6 +1548,12 @@ export interface InvoiceRecipient {
 
   /** Correo electrónico del receptor. Para enviar la factura desde el dasborard */
   email?: string;
+
+  /** Clave del país de residencia fiscal del receptor extranjero. Catálogo SAT c_Pais */
+  countryId?: string;
+
+  /** Número de registro de identificación tributaria del receptor extranjero */
+  foreignTin?: string;
 
   /** Datos del empleado para facturas de nómina (inline, modo ByValues) */
   employeeData?: InvoiceRecipientEmployeeData;

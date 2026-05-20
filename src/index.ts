@@ -7,6 +7,7 @@ export type { IFiscalapiService, OperationOptions, RequestOptions } from './abst
 export type { IApiKeyService } from './abstractions/api-key-service.interface';
 export type { ICatalogService } from './abstractions/catalog-service.interface';
 export type { IInvoiceService } from './abstractions/invoice-service.interface';
+export type { IManifestService } from './abstractions/manifest-service.interface';
 export type { IPersonService } from './abstractions/person-service.interface';
 export type { IProductService } from './abstractions/product-service.interface';
 export type { ITaxFileService } from './abstractions/tax-file-service.interface';
@@ -90,7 +91,23 @@ export type {
   LadingRailTransport,
   LadingTransportPart,
   LadingFigure,
+  // Comercio Exterior complement
+  ComercioExteriorComplement,
+  ComercioExteriorEmisor,
+  ComercioExteriorEmisorDomicilio,
+  ComercioExteriorReceptor,
+  ComercioExteriorReceptorDomicilio,
+  ComercioExteriorPropietario,
+  ComercioExteriorDestinatario,
+  ComercioExteriorDestinatarioDomicilio,
+  ComercioExteriorMercancia,
+  ComercioExteriorMercanciaDescripcionEspecifica,
 } from './models/invoice';
+
+export type {
+  SignManifestRequest,
+  SignManifestResponse
+} from './models/manifest';
 
 export type {
   DownloadRule,

@@ -1,5 +1,6 @@
 import { IFiscalapiClient } from '../abstractions/fiscalapi-client.interface';
 import { IInvoiceService } from '../abstractions/invoice-service.interface';
+import { IManifestService } from '../abstractions/manifest-service.interface';
 import { IProductService } from '../abstractions/product-service.interface';
 import { IPersonService } from '../abstractions/person-service.interface';
 import { IApiKeyService } from '../abstractions/api-key-service.interface';
@@ -17,6 +18,7 @@ import { DownloadCatalogService } from './download-catalog-service';
 import { DownloadRuleService } from './download-rule-service';
 import { DownloadRequestService } from './download-request-service';
 import { InvoiceService } from './invoice-service';
+import { ManifestService } from './manifest-service';
 import { PersonService } from './person-service';
 import { ProductService } from './product-service';
 import { StampService } from './stamp-service';
@@ -77,6 +79,11 @@ export class FiscalapiClient implements IFiscalapiClient {
   readonly stamps: IStampService;
 
   /**
+   * Servicio de manifiestos
+   */
+  readonly manifests: IManifestService;
+
+  /**
    * Crea una nueva instancia del cliente de FiscalAPI
    * @param {FiscalapiSettings} settings - Configuración
    * @private
@@ -97,6 +104,7 @@ export class FiscalapiClient implements IFiscalapiClient {
     this.downloadRules = new DownloadRuleService(httpClient, apiVersion);
     this.downloadRequests = new DownloadRequestService(httpClient, apiVersion);
     this.stamps = new StampService(httpClient, apiVersion);
+    this.manifests = new ManifestService(httpClient, apiVersion);
   }
 
   /**
