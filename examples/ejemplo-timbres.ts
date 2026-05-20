@@ -2,12 +2,13 @@ import { FiscalapiClient, FiscalapiSettings } from '../src/index';
 
 async function main(): Promise<void> {
   
-  const settings: FiscalapiSettings = {
-    apiUrl: 'https://test.fisalapi.com',
-    apiKey: '<API_KEY>',
-    tenant: '<TENANT_ID>',
-    debug: true
-  };
+  // Configuración de FiscalAPI
+const settings: FiscalapiSettings = {
+    apiUrl: 'https://test.fiscalapi.com', // https://live.fiscalapi.com
+    apiKey: '<api-key>', // API key de FiscalAPI
+    tenant: '<tenant>', // Tenant de FiscalAPI
+    debug: true // true, imprime raw request y response en consola, util durante el desarrollo de la integración.
+};
 
   const client = FiscalapiClient.create(settings);
 

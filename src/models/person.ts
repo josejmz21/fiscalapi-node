@@ -58,4 +58,10 @@ export interface Person extends BaseDto {
 
   /** ID del tenant al que pertenece el emisor. Atributo de sólo lectura */
   tenantId?: string;
+
+  /** Clave del país de residencia fiscal del receptor extranjero. Catálogo SAT c_Pais */
+  countryId?: string;
+
+  /** Número de registro de identificación tributaria del receptor extranjero */
+  foreignTin?: string;
 }

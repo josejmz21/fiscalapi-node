@@ -12,10 +12,10 @@ inspect.defaultOptions.colors = true;
 
 // Configuración de FiscalAPI
 const settings: FiscalapiSettings = {
-    apiUrl: 'https://test.fiscalapi.com',
-    apiKey: 'sk_test_b7dae706_e16f_4faf_90fb_a5d1990985a2',
-    tenant: '275510ee-f64d-435a-9e92-1553d8f10a7e',
-    debug: true
+    apiUrl: 'https://test.fiscalapi.com', // https://live.fiscalapi.com
+    apiKey: '<api-key>', // API key de FiscalAPI
+    tenant: '<tenant>', // Tenant de FiscalAPI
+    debug: true // true, imprime raw request y response en consola, util durante el desarrollo de la integración.
 };
 
 // Sellos SAT de prueba

@@ -4,6 +4,7 @@ import { IDownloadCatalogService } from './download-catalog-service.interface';
 import { IDownloadRequestService } from './download-request-service.interface';
 import { IDownloadRuleService } from './download-rule-service.interface';
 import { IInvoiceService } from './invoice-service.interface';
+import { IManifestService } from './manifest-service.interface';
 import { IPersonService } from './person-service.interface';
 import { IProductService } from './product-service.interface';
 import { IStampService } from './stamp-service.interface';
@@ -62,4 +63,9 @@ export interface IFiscalapiClient {
    * Servicio de timbres fiscales
    */
   stamps: IStampService;
+
+  /**
+   * Servicio de manifiestos
+   */
+  manifests: IManifestService;
 }
